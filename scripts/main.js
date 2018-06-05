@@ -75,7 +75,7 @@ module.exports = function(bot) {
 			jobList.push("*" + pair[0] + "*: @" + pair[1]);
 		});
 
-		return msg.send(jobList.join("\n* "));
+		return msg.send(jobList.join("\n• "));
 	});
 
 	// Given weather data, inform about launch potential
@@ -119,7 +119,7 @@ module.exports = function(bot) {
 
 	// Documentation
 	bot.hear(/@robin-bot What can you do\?/, function(mssg) {
-		return mssg.reply("I respond to:\n* `space`\n* `I want to leave this planet`\n* `Crew list`\n* `Is today a good day to launch?`");
+		return mssg.reply("I respond to:\n• `space`\n• `I want to leave this planet`\n• `Crew list`\n• `Is today a good day to launch?`");
 	});
 
 
