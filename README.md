@@ -32,7 +32,7 @@ Sample response:
 > * Telecommunications Equipment Installer: @Robin
 > * Maxillofacial Surgeon: @Dora
 
-The class list is hard-coded in the script, and shuffled with each new crew list. The script uses a `forEach` method to assign jobs, and a `splice` array method to re-assign the Commander and Flight Engineer roles to the first two jobs slots. Some people have the same jobs. The output is formatted in Markdown.
+The class list is hard-coded in the script, and shuffled with each new crew list. The script uses a `forEach` method to assign jobs, and a `splice` array method to re-assign the Commander and Flight Engineer roles to the first two jobs slots. Some people might get the same jobs. The output is formatted in Markdown.
 
 The Greek god, company name, and occupations all come from Darius Kazemi's [corpora collection](https://github.com/dariusk/corpora/tree/master/data).
 
@@ -46,7 +46,7 @@ When the user responds (with, say, *weather: cloudy*), the bot replies with its 
 
 > Better not risk it. Fingers crossed for tomorrow!
 
-The script uses a switch case to ascertain which of its 4 responses to deliver. Multiple cases have the same expression (response), so that the user gets the same response if they type `weather: good` as for `weather: sunny`. There is also a default in case the bot doesn't recognize the weather descriptor provided by the user. 
+The script uses a switch statement to ascertain which of its 3 responses to deliver. Multiple cases have the same expression (response), so that the user gets the same response to `weather: good` as to `weather: sunny`. There is also a default in case the bot doesn't recognize the weather descriptor provided by the user. 
 
 ## space
 
