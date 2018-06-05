@@ -30,6 +30,7 @@ Sample response:
 > * Bartender: @John
 > * Private Detective: @Jessenia
 > * Telecommunications Equipment Installer: @Robin
+> * Maxillofacial Surgeon: @Dora
 
 The class list is hard-coded in the script, and shuffled with each new crew list. The script uses a `forEach` method to assign jobs, and a `splice` array method to re-assign the Commander and Flight Engineer roles to the first two jobs slots. Some people have the same jobs. The output is formatted in Markdown.
 
