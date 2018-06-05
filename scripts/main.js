@@ -51,12 +51,17 @@ module.exports = function(bot) {
 			ourJobs.push([job, name]);
 		});
 
-		var list = [];
+		var commander = ourJobs[0][1];
+		var flightEng = ourJobs[1][1];
+		ourJobs.splice(0,1,["Commander",com]);
+		ourJobs.splice(1,1,["Flight Engineer",com]);
+
+		var jobList = [];
 		ourJobs.forEach(function(pair) {
-			list.push("*" + pair[0] + "*: " + pair[1]);
+			jobList.push("*" + pair[0] + "*: " + pair[1] + "\n");
 		});
-		
-		return msg.send(list.join(". "));
+
+		return msg.send(jobList.join(". "));
 	});
 
 	bot.hear(/Is today a good day to launch\?/, function(comm) {
