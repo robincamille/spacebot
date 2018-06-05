@@ -18,31 +18,22 @@ function shuffle(a) {
 }
 
 function getRandomInt(max) { 
+	 // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
   	return Math.floor(Math.random() * Math.floor(max));
 	};
-  // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
 
 module.exports = function(bot) {
-	//comes with commands specific to hubot module library
-	//see https://hubot.github.com/docs/scripting/ 
 
-
-
-	// ['Object','Period (days)','Distance (ly)']
-
+	// Habitable exoplanet responder
 	bot.hear(/I want to leave this planet/, function(res) {
 		planetNum = getRandomInt(exoplanets.length);
 		planet = exoplanets[planetNum];
-		return res.send("How about " + planet[0] + "? It's only " + planet[2] + " light years away! It orbits its star every " + planet[1] + " days.");
+		return res.send("How about the habitable exoplanet " + planet[0] + "? It's only " + planet[2] + " light years away! It orbits its star every " + planet[1] + " days.");
 	});
 
-	bot.hear(/Crew list/, function(msg) {
-		// crew1 = users[getRandomInt(users.length)];
-		// crew2 = users[getRandomInt(users.length)];
-		// crew3 = users[getRandomInt(users.length)];
-		//randomJob = jobs[getRandomInt(jobs.length)];
-		// return msg.send("*Commander:* " + crew1 + ". *Flight Engineer:* " + crew2 + ". *" + randomJob + ":* " + crew3 + ".");
+	// Crew list: jobs for everybody in the class
+	bot.hear((/Crew list/ || /crew list/), function(msg) {
 
 		var crew = shuffle(users);
 		var ourJobs = [];
@@ -58,12 +49,13 @@ module.exports = function(bot) {
 
 		var jobList = [];
 		ourJobs.forEach(function(pair) {
-			jobList.push("*" + pair[0] + "*: " + pair[1] + "\n");
+			jobList.push("*" + pair[0] + "*: @" + pair[1]);
 		});
 
-		return msg.send(jobList.join(". "));
+		return msg.send(jobList.join("\n"));
 	});
 
+	// Given weather data, inform about launch potential
 	bot.hear(/Is today a good day to launch\?/, function(comm) {
 		return comm.reply("What's the weather like? Type `weather: sunny`, `weather: rainy`, etc.")
 	});
@@ -94,27 +86,19 @@ module.exports = function(bot) {
 			case "lightning":
 			case "snow":
 			case "snowing":
+			case "blizzard":
 				return repl.reply("Are you nuts?! Things are bad down here, but let's not fly into a storm!");
 				break;
+			default:
+				return repl.reply("Yeah, sure, why not? Let's get the heck off this rock!")
 		}
 	});
 
+	// Documentation
+	bot.hear(/@robin-bot help/, function(mssg) {
+		return mssg.reply("I respond to:\n* `I want to leave this planet`\n* `Crew list`\n* `Is today a good day to launch?`");
+	});
 
-	// bot.hear(/Hi my name is (.*)/i, function(msg) {
-	// 	var name = msg.match[1];
-	// 	return msg.reply("Nice to meet ya, " + name);
-	// });
 
-	// bot.hear(/Add (.*) and (.*)/i, function(msg) {
-	// 	var a = parseInt(msg.match[1]);
-	// 	var b = parseInt(msg.match[2]);
-	// 	var equation = a + b;
-	// 	return msg.reply(a + " and " + b + "? That's " + equation);
-	// })
-
-	// //below doesn't work -- bug
-	// bot.respond(/What's your fave food\?/, function(res) {
-	// 	return res.send("Brains");
-	// });
 
 };
