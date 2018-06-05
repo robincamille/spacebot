@@ -90,7 +90,7 @@ module.exports = function(bot) {
 			case "partly cloudy":
 			case "good":
 			case "balmy":
-				return repl.reply("Today's a great launch day! 10... 9...");
+				return repl.reply("☀️ Today's a great launch day! 10... 9...");
 				break;
 			case "cloudy":
 			case "clouds":
@@ -98,7 +98,7 @@ module.exports = function(bot) {
 			case "rainy":
 			case "rain":
 			case "bad":
-				return repl.reply("Better not risk it. Fingers crossed for tomorrow!");
+				return repl.reply("🌧 Better not risk it. Fingers crossed for tomorrow!");
 				break;
 			case "stormy":
 			case "storm":
@@ -110,10 +110,10 @@ module.exports = function(bot) {
 			case "snow":
 			case "snowing":
 			case "blizzard":
-				return repl.reply("Are you nuts?! Things are bad down here, but let's not fly into a storm!");
+				return repl.reply("⚡️❄️ Are you nuts?! Things are bad down here, but let's not fly into a storm!");
 				break;
 			default:
-				return repl.reply("Yeah, sure, why not? Let's get the heck off this rock!")
+				return repl.reply("🤷‍♀️ Yeah, sure, why not? Let's get the heck off this rock!")
 		}
 	});
 
