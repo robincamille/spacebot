@@ -7,7 +7,7 @@ module.exports = function(bot) {
 
 	bot.hear(/I want to leave this planet/, function(res) {
 		planet = res.random(exoplanets);
-		return res.send("How about " + planet[0] + "?");
+		return res.send("How about " + planet + "?");
 	});
 
 	bot.hear(/Hi my name is (.*)/i, function(msg) {
