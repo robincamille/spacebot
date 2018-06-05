@@ -72,7 +72,7 @@ When a user types `@robin-bot What can you do?`, the bot responds with simple do
 * I used two functions found elsewhere, [an array shuffler](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array) and a [random integer generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random).
 
 ### Unsolved issues
-* I wasn't sure how to code in uppercase/lowercase command options. I tried `bot.hear((/Crew list/ || /crew list/), function(msg) { ...` but it didn't work. 
+* I wasn't sure how to code in uppercase/lowercase command options. I tried `bot.hear((/Crew list/ || /crew list/), function(msg) { ...` but it didn't work. — This could probably be solved by a regex, now that I think of it...
 * Is there a way to automatically load a list of users? Currently, it is hard-coded into the script. I looked through the [Hubot docs](https://hubot.github.com/docs/scripting/) but didn't see how to export a users list, except by storing previous user interactions in the `brain`.
 
 
