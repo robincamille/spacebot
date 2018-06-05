@@ -27,7 +27,7 @@ module.exports = function(bot) {
 		crew2 = users[getRandomInt(users.length)];
 		crew3 = users[getRandomInt(users.length)];
 		randomJob = jobs[getRandomInt(jobs.length)];
-		return res.send("Captain: " + crew1 + ". First Mate: " + crew2 + ". " + randomJob + ": " + crew3 + ".");
+		return msg.send("Captain: " + crew1 + ". First Mate: " + crew2 + ". " + randomJob + ": " + crew3 + ".");
 	}
 
 
