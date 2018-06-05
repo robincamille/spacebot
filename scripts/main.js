@@ -22,13 +22,13 @@ module.exports = function(bot) {
 		return res.send("How about " + planet[0] + "? It's only " + planet[2] + " light years away! It orbits its star every " + planet[1] + " days.");
 	});
 
-	bot.hear(/Crew list/), function(msg) {
+	bot.hear(/Crew list/, function(msg) {
 		crew1 = users[getRandomInt(users.length)];
 		crew2 = users[getRandomInt(users.length)];
 		crew3 = users[getRandomInt(users.length)];
 		randomJob = jobs[getRandomInt(jobs.length)];
 		return msg.send("Captain: " + crew1 + ". First Mate: " + crew2 + ". " + randomJob + ": " + crew3 + ".");
-	}
+	});
 
 
 	// bot.hear(/Hi my name is (.*)/i, function(msg) {
