@@ -27,7 +27,32 @@ module.exports = function(bot) {
 		crew2 = users[getRandomInt(users.length)];
 		crew3 = users[getRandomInt(users.length)];
 		randomJob = jobs[getRandomInt(jobs.length)];
-		return msg.send("Captain: " + crew1 + ". First Mate: " + crew2 + ". " + randomJob + ": " + crew3 + ".");
+		return msg.send("*Commander:* " + crew1 + ". *Flight Engineer:* " + crew2 + ". *" + randomJob + ":* " + crew3 + ".");
+	});
+
+	bot.hear(/Is today a good day to launch\?/, function(comm) {
+		return comm.reply("What's the weather like? Type `weather: sunny`, `weather: rainy`, etc.")
+	});
+
+	bot.hear(/weather: (.*)/, function(repl) {
+		var weather = repl.match[1];
+		switch (weather) {
+			case "sunny":
+				return repl.reply("Sunny? Today's a great launch day! 10... 9...");
+				break;
+			case "cloudy":
+			case "partly cloudy":
+			case "rainy":
+				return repl.reply("Better not risk it. Fingers crossed for tomorrow!");
+				break;
+			case "stormy":
+			case "storming":
+			case "thunderstorms":
+			case "thunder":
+			case "lightning":
+				return repl.reply("Are you nuts?! Things are bad down here, but let's not fly into a storm!");
+				break;
+		}
 	});
 
 
