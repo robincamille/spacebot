@@ -18,7 +18,7 @@ module.exports = function(bot) {
 
 	bot.hear(/I want to leave this planet/, function(res) {
 		planetNum = getRandomInt(exoplanets.length);
-		planet = res.random(exoplanets[planetNum]);
+		planet = exoplanets[planetNum];
 		return res.send("How about " + planet[0] + "? It's only " + planet[2] + " light years away! It orbits its star every " + planet[1] + " days.");
 	});
 
