@@ -1,15 +1,15 @@
 # Spacebot
 
-This Slackbot gets it. You just wanna go to space! Let Spacebot help. 
+This Slack bot gets it. You just wanna go to space! Let Spacebot help.  
 
-## Leave Earth
+## I want to leave this planet
 
 Anytime someone types **I want to leave this planet** in the Slack workspace, the bot will helpfully suggest a habitable exoplanet.
 
 Sample response:
 > How about the habitable exoplanet TRAPPIST-1f? It's only 39 light years away! It orbits its star every 9.2 days.
 
-The suggested exoplanet is randomly chosen from a list of potentially exoplanets in the conservatively habitable zone, which comes from [Wikipedia](https://en.wikipedia.org/wiki/List_of_potentially_habitable_exoplanets#List_of_exoplanets_in_the_conservative_habitable_zone).
+The suggested exoplanet is randomly chosen from a list of potential exoplanets in the conservatively habitable zone. This list comes from [Wikipedia](https://en.wikipedia.org/wiki/List_of_potentially_habitable_exoplanets#List_of_exoplanets_in_the_conservative_habitable_zone).
 
 ## Crew list
 
@@ -19,23 +19,23 @@ The bot also informs you of the spacecraft's name and sponsor (both randomly cho
 
 Sample response:
 > Welcome to the spacecraft Hades 17, sponsored by Bank of America! Here's your crew:
-> *Commander*: @Sapo
-> *Flight Engineer*: @Eda
-> *Parking Lot Attendant*: @Bree
-> *Aerobics Instructor*: @summer
-> *Funeral Director*: @Mauro
-> *Translator*: @Mandy
-> *Travel Agent*: @Jeremy
-> *Lifeguard*: @trevor
-> *Bartender*: @John
-> *Parking Lot Attendant*: @Jessenia
-> *Telecommunications Equipment Installer*: @Robin
+> Commander: @Sapo
+> Flight Engineer: @Eda
+> Parking Lot Attendant: @Bree
+> Aerobics Instructor: @summer
+> Funeral Director: @Mauro
+> Translator: @Mandy
+> Travel Agent: @Jeremy
+> Lifeguard: @trevor
+> Bartender: @John
+> Private Detective: @Jessenia
+> Telecommunications Equipment Installer: @Robin
 
-The class list is hard-coded in the script, and shuffled with each new crew list. 
+The class list is hard-coded in the script, and shuffled with each new crew list. The script uses a `forEach` method to assign jobs, and a `splice` array method to re-assign the Commander and Flight Engineer roles to the first two jobs slots. Some people have the same jobs. The output is formatted in Markdown.
 
 The Greek god, company name, and occupations all come from Darius Kazemi's [corpora collection](https://github.com/dariusk/corpora/tree/master/data).
 
-## Launch day 
+## Is today a good day to launch?
 
 The last thing you'll require for your journey is a launch date. Anytime someone types **Is today a good day to launch?** in the Slack workspace, the bot responds with a request for clarification:
 
@@ -47,9 +47,23 @@ When the user responds (with, say, *weather: cloudy*), the bot replies with its 
 
 The script uses a switch case to ascertain its responses. There are 4 response options: 3 for a selection of weather words, and 1 default in case the bot doesn't recognize the weather descriptor provided by the user.
 
+## What can you do?
 
+When a user types `@robin-bot What can you do?`, the bot responds with simple documentation: 
 
+> I respond to:
+> * `I want to leave this planet`
+> * `Crew list`
+> * `Is today a good day to launch?`
 
+---
+
+## Notes 
+
+* Heroku app URL: https://dashboard.heroku.com/apps/spacebot2
+* I used two functions found elsewhere, [an array shuffler](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array) and [random integer generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random).
+* I wasn't sure how to code in uppercase/lowercase command options. I tried `bot.hear((/Crew list/ || /crew list/, function(msg) { ...` but it didn't work. 
+* 
 
 
 
