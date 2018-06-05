@@ -5,6 +5,11 @@ var jobs = ["Commander","Flight Engineer","First Mate","Accountant","Actuary","A
 
 var users = ["Bree","Eda","Jeremy","Jessenia","John","Mandy","Mauro","Robin","Sapo","summer","trevor"];
 
+var companies = ["Wal-Mart Stores","Exxon Mobil","Chevron","Berkshire Hathaway","Apple","Phillips 66","General Motors","Ford Motor","General Electric","Valero Energy","AT&T","CVS Caremark","Fannie Mae","UnitedHealth Group","Verizon Communications","Hewlett-Packard","J.P. Morgan Chase","Costco Wholesale","Express Scripts Holding","Bank of America","Cardinal Health","IBM","Kroger","Citigroup","Wells Fargo","Boeing","Procter & Gamble","Freddie Mac","Home Depot","Microsoft","Amazon","Target","Walgreens","Johnson & Johnson","State Farm Insurance","MetLife","PepsiCo","Comcast","Google","ConocoPhillips","Dow Chemical","Caterpillar","United Parcel Service","Pfizer","Lowe’s Companies","Intel Corporation","The Coca-Cola Company","Lockheed Martin","Best Buy","The Walt Disney Company","FedEx","Goldman Sachs","Delta Air Lines","Oracle","Morgan Stanley","Twenty-First Century Fox","American Express","Philip Morris International","3M Company","Time Warner","Halliburton Company"];
+
+var gods = ["Aphrodite","Apollo","Ares","Artemis","Athena","Demeter","Dionysus","Hades","Hephaestus","Hera","Hermes","Hestia","Poseidon","Zeus","Aether","Ananke","Chaos","Chronos","Erebus","Eros","Hypnos","Uranus","Gaia","Phanes","Pontus","Tartarus","Thalassa","Thanatos","Hemera","Nyx","Nemesis"];
+
+
 function shuffle(a) {
 	//from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
     var j, x, i;
@@ -33,7 +38,7 @@ module.exports = function(bot) {
 	});
 
 	// Crew list: jobs for everybody in the class
-	bot.hear((/Crew list/ || /crew list/), function(msg) {
+	bot.hear(/Crew list/, function(msg) {
 
 		var crew = shuffle(users);
 		var ourJobs = [];
@@ -47,7 +52,8 @@ module.exports = function(bot) {
 		ourJobs.splice(0,1,["Commander", commander]);
 		ourJobs.splice(1,1,["Flight Engineer", flightEng]);
 
-		var jobList = [];
+		var greeting = "Welcome to the spacecraft " + gods[getRandomInt(gods.length)] + " " + getRandomInt(99) + ", sponsored by " + companies[getRandomInt(companies.length)] + "! Here's your crew:"
+		var jobList = [greeting];
 		ourJobs.forEach(function(pair) {
 			jobList.push("*" + pair[0] + "*: @" + pair[1]);
 		});
