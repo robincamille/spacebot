@@ -2,6 +2,8 @@
 
 This Slack bot gets it. You just wanna go to space! Let Spacebot help.  
 
+The main script for this bot is located in scripts/main.js.
+
 ## I want to leave this planet
 
 Anytime someone types **I want to leave this planet** in the Slack workspace, the bot will helpfully suggest somewhere else to go.
