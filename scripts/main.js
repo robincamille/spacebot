@@ -53,8 +53,8 @@ module.exports = function(bot) {
 
 		var commander = ourJobs[0][1];
 		var flightEng = ourJobs[1][1];
-		ourJobs.splice(0,1,["Commander",com]);
-		ourJobs.splice(1,1,["Flight Engineer",com]);
+		ourJobs.splice(0,1,["Commander", commander]);
+		ourJobs.splice(1,1,["Flight Engineer", flightEng]);
 
 		var jobList = [];
 		ourJobs.forEach(function(pair) {
