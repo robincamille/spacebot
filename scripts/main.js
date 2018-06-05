@@ -5,14 +5,29 @@ var jobs = ["Accountant","Actuary","Aerobics Instructor","Aerospace Engineer","A
 
 var users = ["Bree","Eda","Jeremy","Jessenia","John","Mandy","Mauro","Robin","Sapo","summer","trevor"];
 
+function shuffle(a) {
+	//from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
+function getRandomInt(max) { 
+  	return Math.floor(Math.random() * Math.floor(max));
+	};
+  // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+
 module.exports = function(bot) {
 	//comes with commands specific to hubot module library
 	//see https://hubot.github.com/docs/scripting/ 
 
-	function getRandomInt(max) { 
-  // this is from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-  	return Math.floor(Math.random() * Math.floor(max));
-		};
+
 
 	// ['Object','Period (days)','Distance (ly)']
 
@@ -23,10 +38,18 @@ module.exports = function(bot) {
 	});
 
 	bot.hear(/Crew list/, function(msg) {
-		crew1 = users[getRandomInt(users.length)];
-		crew2 = users[getRandomInt(users.length)];
-		crew3 = users[getRandomInt(users.length)];
-		randomJob = jobs[getRandomInt(jobs.length)];
+		var crew = shuffle(users);
+		// crew1 = users[getRandomInt(users.length)];
+		// crew2 = users[getRandomInt(users.length)];
+		// crew3 = users[getRandomInt(users.length)];
+		//randomJob = jobs[getRandomInt(jobs.length)];
+		// return msg.send("*Commander:* " + crew1 + ". *Flight Engineer:* " + crew2 + ". *" + randomJob + ":* " + crew3 + ".");
+
+		var ourJobs = [];
+		crew.forEach(function(name) {
+			var job = jobs[getRandomInt(jobs.length)];
+			ourJobs.push([job, name]);
+		});
 		return msg.send("*Commander:* " + crew1 + ". *Flight Engineer:* " + crew2 + ". *" + randomJob + ":* " + crew3 + ".");
 	});
 
@@ -38,11 +61,15 @@ module.exports = function(bot) {
 		var weather = repl.match[1];
 		switch (weather) {
 			case "sunny":
-				return repl.reply("Sunny? Today's a great launch day! 10... 9...");
+			case "partly cloudy":
+			case "good":
+			case "balmy":
+				return repl.reply("Today's a great launch day! 10... 9...");
 				break;
 			case "cloudy":
 			case "partly cloudy":
 			case "rainy":
+			case "bad":
 				return repl.reply("Better not risk it. Fingers crossed for tomorrow!");
 				break;
 			case "stormy":
@@ -50,6 +77,8 @@ module.exports = function(bot) {
 			case "thunderstorms":
 			case "thunder":
 			case "lightning":
+			case "snow":
+			case "snowing":
 				return repl.reply("Are you nuts?! Things are bad down here, but let's not fly into a storm!");
 				break;
 		}
