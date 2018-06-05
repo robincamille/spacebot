@@ -4,12 +4,12 @@ This Slack bot gets it. You just wanna go to space! Let Spacebot help.
 
 ## I want to leave this planet
 
-Anytime someone types **I want to leave this planet** in the Slack workspace, the bot will helpfully suggest a habitable exoplanet.
+Anytime someone types **I want to leave this planet** in the Slack workspace, the bot will helpfully suggest somewhere else to go.
 
 Sample response:
 > How about the habitable exoplanet TRAPPIST-1f? It's only 39 light years away! It orbits its star every 9.2 days.
 
-The suggested exoplanet is randomly chosen from a list of potential exoplanets in the conservatively habitable zone. This list comes from [Wikipedia](https://en.wikipedia.org/wiki/List_of_potentially_habitable_exoplanets#List_of_exoplanets_in_the_conservative_habitable_zone).
+The suggested planet is randomly chosen from a list of potential exoplanets in the conservatively habitable zone. This list comes from [Wikipedia](https://en.wikipedia.org/wiki/List_of_potentially_habitable_exoplanets#List_of_exoplanets_in_the_conservative_habitable_zone).
 
 ## Crew list
 
@@ -19,17 +19,17 @@ The bot also informs you of the spacecraft's name and sponsor (both randomly cho
 
 Sample response:
 > Welcome to the spacecraft Hades 17, sponsored by Bank of America! Here's your crew:
-> Commander: @Sapo
-> Flight Engineer: @Eda
-> Parking Lot Attendant: @Bree
-> Aerobics Instructor: @summer
-> Funeral Director: @Mauro
-> Translator: @Mandy
-> Travel Agent: @Jeremy
-> Lifeguard: @trevor
-> Bartender: @John
-> Private Detective: @Jessenia
-> Telecommunications Equipment Installer: @Robin
+> * Commander: @Sapo
+> * Flight Engineer: @Eda
+> * Parking Lot Attendant: @Bree
+> * Aerobics Instructor: @summer
+> * Funeral Director: @Mauro
+> * Translator: @Mandy
+> * Travel Agent: @Jeremy
+> * Lifeguard: @trevor
+> * Bartender: @John
+> * Private Detective: @Jessenia
+> * Telecommunications Equipment Installer: @Robin
 
 The class list is hard-coded in the script, and shuffled with each new crew list. The script uses a `forEach` method to assign jobs, and a `splice` array method to re-assign the Commander and Flight Engineer roles to the first two jobs slots. Some people have the same jobs. The output is formatted in Markdown.
 
@@ -45,13 +45,20 @@ When the user responds (with, say, *weather: cloudy*), the bot replies with its 
 
 > Better not risk it. Fingers crossed for tomorrow!
 
-The script uses a switch case to ascertain its responses. There are 4 response options: 3 for a selection of weather words, and 1 default in case the bot doesn't recognize the weather descriptor provided by the user.
+The script uses a switch case to ascertain which of its 4 responses to deliver. Multiple cases have the same expression (response), so that the user gets the same response if they type `weather: good` as for `weather: sunny`. There is also a default in case the bot doesn't recognize the weather descriptor provided by the user. 
+
+## space
+
+Anytime a user types `space` (lowercase) in the Slack workspace, the bot responds with:
+
+> SPACE! The final frontier. 🚀🌏🛰✨🛸☄️👾
 
 ## What can you do?
 
 When a user types `@robin-bot What can you do?`, the bot responds with simple documentation: 
 
 > I respond to:
+> * `space`
 > * `I want to leave this planet`
 > * `Crew list`
 > * `Is today a good day to launch?`
@@ -61,9 +68,11 @@ When a user types `@robin-bot What can you do?`, the bot responds with simple do
 ## Notes 
 
 * Heroku app URL: https://dashboard.heroku.com/apps/spacebot2
-* I used two functions found elsewhere, [an array shuffler](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array) and [random integer generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random).
+* I used two functions found elsewhere, [an array shuffler](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array) and a [random integer generator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random).
+
+### Unsolved issues
 * I wasn't sure how to code in uppercase/lowercase command options. I tried `bot.hear((/Crew list/ || /crew list/, function(msg) { ...` but it didn't work. 
-* 
+* Is there a way to automatically load a list of users? Currently, it is hard-coded into the script. I looked through the [Hubot docs](https://hubot.github.com/docs/scripting/) but didn't see how to export a users list, except by storing previous user interactions in the `brain`.
 
 
 

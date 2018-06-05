@@ -75,7 +75,7 @@ module.exports = function(bot) {
 			jobList.push("*" + pair[0] + "*: @" + pair[1]);
 		});
 
-		return msg.send(jobList.join("\n"));
+		return msg.send(jobList.join("\n* "));
 	});
 
 	// Given weather data, inform about launch potential
