@@ -13,7 +13,7 @@ var users = ["Bree","Dora","Eda","Jeremy","Jessenia","John","Mandy","Mauro","Rob
 
 var companies = ["Wal-Mart Stores","Exxon Mobil","Chevron","Berkshire Hathaway","Apple","Phillips 66","General Motors","Ford Motor","General Electric","Valero Energy","AT&T","CVS Caremark","Fannie Mae","UnitedHealth Group","Verizon Communications","Hewlett-Packard","J.P. Morgan Chase","Costco Wholesale","Express Scripts Holding","Bank of America","Cardinal Health","IBM","Kroger","Citigroup","Wells Fargo","Boeing","Procter & Gamble","Freddie Mac","Home Depot","Microsoft","Amazon","Target","Walgreens","Johnson & Johnson","State Farm Insurance","MetLife","PepsiCo","Comcast","Google","ConocoPhillips","Dow Chemical","Caterpillar","United Parcel Service","Pfizer","Lowe’s Companies","Intel Corporation","The Coca-Cola Company","Lockheed Martin","Best Buy","The Walt Disney Company","FedEx","Goldman Sachs","Delta Air Lines","Oracle","Morgan Stanley","Twenty-First Century Fox","American Express","Philip Morris International","3M Company","Time Warner","Halliburton Company"];
 
-var gods = ["Aphrodite","Apollo","Ares","Artemis","Athena","Demeter","Dionysus","Hades","Hephaestus","Hera","Hermes","Hestia","Poseidon","Zeus","Aether","Ananke","Chaos","Chronos","Erebus","Eros","Hypnos","Uranus","Gaia","Phanes","Pontus","Tartarus","Thalassa","Thanatos","Hemera","Nyx","Nemesis"];
+var gods = ["Aphrodite","Apollo","Ares","Artemis","Athena","Demeter","Dionysus","Hades","Hephaestus","Hera","Hermes","Hestia","Poseidon","Zeus","Aether","Ananke","Chaos","Chronos","Erebus","Eros","Hypnos","Uranus","Gaia","Phanes","Pontus","Tartarus","Thalassa","Thanatos","Hemera","Nyx","Nemesis","Cthulhu"];
 
 
 // Functions setup 
